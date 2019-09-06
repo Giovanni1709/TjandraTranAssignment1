@@ -7,7 +7,7 @@ public class Main {
         System.out.println("hi");
         // 150000 one arrays, It took: PT39.425S
 //        A11.assignment11();
-        // 75000 each arrays, It took: PT18.532S
+        // 75000 each arrays, It took: PT18.649S
         A12.assignment12();
     }
 }

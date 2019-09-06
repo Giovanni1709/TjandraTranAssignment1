@@ -1,22 +1,20 @@
 import java.time.Duration;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class A12 {
     public static void assignment12() {
         Instant begin = Instant.now();
+        final int numberToSort = 75000;
 
-        int[] intArray = new int[75000];
-        for (int i = 0; i < 75000; i++) {
-            int random = (int) (Math.random() * 75000 + 1);
+        int[] intArray = new int[numberToSort];
+        for (int i = 0; i < numberToSort; i++) {
+            int random = (int) (Math.random() * numberToSort + 1);
             intArray[i] = random;
         }
 
-        int[] intArray2 = new int[75000];
-        for (int i = 0; i < 75000; i++) {
-            int random = (int) (Math.random() * 75000 + 1);
+        int[] intArray2 = new int[numberToSort];
+        for (int i = 0; i < numberToSort; i++) {
+            int random = (int) (Math.random() * numberToSort + 1);
             intArray2[i] = random;
         }
 
@@ -31,15 +29,7 @@ public class A12 {
         bubbleSort(intArray);
         bubbleSort(intArray2);
 
-        System.out.println("Array list after sorting:");
-        for (int value : intArray) {
-            System.out.println(value);
-        }
-        for (int value : intArray2) {
-            System.out.println(value);
-        }
-
-
+        mergingarr(intArray, intArray2);
 
         Instant end = Instant.now();
         Duration duration = Duration.between(begin, end);
@@ -62,6 +52,31 @@ public class A12 {
                     arr[j] = temp;
                 }
             }
+        }
+    }
+
+
+    /**
+     * https://stackoverflow.com/a/48483049
+     * @param x
+     * @param y
+     */
+    public static void mergingarr(int x[], int y[]) {
+        int len=x.length+y.length;
+        int arr[]=new int[len];
+        //create a variable j which will begin zeroth index of second array
+        int j=0;
+        for(int i=0; i<arr.length; i++) {
+            if(i<x.length) {
+                arr[i]=x[i];
+            } else {
+                arr[i]=y[j];
+                j++;
+            }
+        }
+        System.out.println("Array list after sorting and merging:");
+        for(int i:arr) {
+            System.out.println(i);
         }
     }
 }

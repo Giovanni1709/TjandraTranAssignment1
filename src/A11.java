@@ -4,10 +4,11 @@ import java.time.Instant;
 public class A11 {
     public static void assignment11() {
         Instant begin = Instant.now();
+        final int numberToSort = 150000;
 
-        int[] intArray = new int[150000];
-        for (int i = 0; i < 150000; i++) {
-            int random = (int) (Math.random() * 150000 + 1);
+        int[] intArray = new int[numberToSort];
+        for (int i = 0; i < numberToSort; i++) {
+            int random = (int) (Math.random() * numberToSort + 1);
             intArray[i] = random;
         }
 
