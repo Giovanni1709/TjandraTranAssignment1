@@ -5,5 +5,6 @@ public class Main {
 
     public void run() {
         System.out.println("hi");
+        A11.assignment11();
     }
 }
