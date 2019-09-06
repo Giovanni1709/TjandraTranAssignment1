@@ -11,12 +11,14 @@ public class A11 {
             intArray[i] = random;
         }
 
+        System.out.println("Array list before sorting:");
         for (int value : intArray) {
             System.out.println(value);
         }
 
         bubbleSort(intArray);
 
+        System.out.println("Array list after sorting:");
         for (int value : intArray) {
             System.out.println(value);
         }
