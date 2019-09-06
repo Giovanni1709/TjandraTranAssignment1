@@ -5,6 +5,9 @@ public class Main {
 
     public void run() {
         System.out.println("hi");
-        A11.assignment11();
+        // 150000 one arrays, It took: PT39.425S
+//        A11.assignment11();
+        // 75000 each arrays, It took: PT18.532S
+        A12.assignment12();
     }
 }
