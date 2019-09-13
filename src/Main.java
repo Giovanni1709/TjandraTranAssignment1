@@ -2,6 +2,7 @@ import Assignment1.BubbleSort;
 import Assignment2.BubbleSortDivideToTwo;
 import Assignment3.BubbleSortTwoThreads;
 import Assignment4.BubbleSortThreadThreshold;
+import Assignment5.BubbleSortWithForkPool;
 import org.omg.CORBA.PUBLIC_MEMBER;
 
 import java.sql.SQLOutput;
@@ -23,7 +24,9 @@ public class Main {
             numbersArray[i] = randomArrayGenerator(amountOfNumbers);
         }
 
-        Assignment4(5000);
+        Assignment1();
+        Assignment2();
+        Assignment3();
     }
 
     public void printArray(int[] array){
@@ -48,12 +51,13 @@ public class Main {
         BubbleSort bubbleSort = new BubbleSort();
         long averageDuration=0;
         for (int a = 0; a < 5 ; a++) {
-            for (int i = 0; i < 10; i++) {
+            //for (int i = 0; i < 10; i++) {
                 long begin = System.currentTimeMillis();
                 bubbleSort.sort(numbersArray[a]);
-                averageDuration += System.currentTimeMillis() - begin;
-            }
-            averageDuration /= 10;
+                averageDuration = System.currentTimeMillis()-begin;
+                //averageDuration += System.currentTimeMillis() - begin;
+           // }
+            //averageDuration /= 10;
             System.out.println("average "+numbersArray[a].length+" : " + averageDuration + " ms.");
         }
     }
@@ -63,12 +67,13 @@ public class Main {
         BubbleSortDivideToTwo bubbleSort = new BubbleSortDivideToTwo();
         long averageDuration=0;
         for (int a = 0; a < 5 ; a++) {
-            for (int i = 0; i < 10; i++) {
+            //for (int i = 0; i < 10; i++) {
                 long begin = System.currentTimeMillis();
                 bubbleSort.sort(numbersArray[a]);
-                averageDuration += System.currentTimeMillis() - begin;
-            }
-            averageDuration /= 10;
+                averageDuration = System.currentTimeMillis()-begin;
+                //averageDuration += System.currentTimeMillis() - begin;
+            //}
+            //averageDuration /= 10;
             System.out.println("average "+numbersArray[a].length+" : " + averageDuration + " ms.");
         }
     }
@@ -101,6 +106,20 @@ public class Main {
             averageDuration /= 10;
             System.out.println("average "+numbersArray[a].length+" : " + averageDuration + " ms.");
         }
+    }
 
+    public void Assignment5(int threshold) {
+        System.out.println( "Assignment 5 divide by 2 recursively while above threshold with RecursiveTask and ForkJoinPool ");
+        BubbleSortWithForkPool bubbleSort = new BubbleSortWithForkPool();
+        long averageDuration=0;
+        for (int a = 0; a < 5 ; a++) {
+            for (int i = 0; i < 10; i++) {
+                long begin = System.currentTimeMillis();
+                bubbleSort.sort(numbersArray[a],threshold);
+                averageDuration += System.currentTimeMillis() - begin;
+            }
+            averageDuration /= 10;
+            System.out.println("average "+numbersArray[a].length+" : " + averageDuration + " ms.");
+        }
     }
 }
