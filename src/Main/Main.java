@@ -23,7 +23,7 @@ public class Main {
             numbersArray[i] = 25000 * ((int) Math.pow(2, i));
         }
 
-        Assignment5(1000);//change this to preferred assignment
+        Assignment1();//change this to preferred assignment
     }
 
     /**
@@ -64,15 +64,7 @@ public class Main {
                 results[i] = System.currentTimeMillis() - begin;
             }
 
-            Arrays.sort(results);
-
-            long avg= 0;
-            for (int i = 1; i < results.length - 1; i++) {
-                avg += results[i];
-            }
-
-            avg = avg/8;
-            System.out.println("average "+numbersArray[a]+" : " + avg + " ms.");
+            System.out.println("average "+numbersArray[a]+" : " + avgDuration(results) + " ms.");
         }
     }
 
@@ -89,15 +81,7 @@ public class Main {
                 results[i] = System.currentTimeMillis()-begin;
             }
 
-            Arrays.sort(results);
-
-            long avg= 0;
-            for (int i = 1; i < results.length - 1; i++) {
-                avg += results[i];
-            }
-
-            avg = avg/8;
-            System.out.println("average "+numbersArray[a]+" : " + avg + " ms.");
+            System.out.println("average "+numbersArray[a]+" : " + avgDuration(results) + " ms.");
         }
     }
 
@@ -116,13 +100,7 @@ public class Main {
 
             Arrays.sort(results);
 
-            long avg= 0;
-            for (int i = 1; i < results.length - 1; i++) {
-                avg += results[i];
-            }
-
-            avg = avg/8;
-            System.out.println("average "+numbersArray[a]+" : " + avg + " ms.");
+            System.out.println("average "+numbersArray[a]+" : " + avgDuration(results) + " ms.");
         }
     }
 
@@ -139,15 +117,7 @@ public class Main {
                 results[i] = System.currentTimeMillis()-begin;
             }
 
-            Arrays.sort(results);
-
-            long avg= 0;
-            for (int i = 1; i < results.length - 1; i++) {
-                avg += results[i];
-            }
-
-            avg = avg/8;
-            System.out.println("average "+numbersArray[a]+" : " + avg + " ms.");
+            System.out.println("average "+numbersArray[a]+" : " + avgDuration(results) + " ms.");
         }
     }
 
@@ -164,15 +134,36 @@ public class Main {
                 results[i] = System.currentTimeMillis()-begin;
             }
 
-            Arrays.sort(results);
-
-            long avg= 0;
-            for (int i = 1; i < results.length - 1; i++) {
-                avg += results[i];
-            }
-
-            avg = avg/8;
-            System.out.println("average "+numbersArray[a]+" : " + avg + " ms.");
+            System.out.println("average "+numbersArray[a]+" : " + avgDuration(results) + " ms.");
         }
+    }
+
+    /**
+     * calculates the average of the duration measurements without the highest and the lowest value
+     * @param duration array of multiple measurement results
+     * @return long the average
+     */
+    public long avgDuration(long[] duration) {
+        long avg = 0;
+
+        int longest=0;
+        int shortest=0;
+
+        for (int i = 1; i < duration.length; i++) {
+            if (duration[shortest] > duration[i]) {
+                shortest = i;
+            } else if (duration[longest]<duration[i]) {
+                longest = i;
+            }
+        }
+
+        for (int i = 0; i < duration.length; i++) {
+            if (i != shortest && i != longest) {
+                avg += duration[i];
+            }
+        }
+
+        avg = avg / (duration.length - 2);
+        return avg;
     }
 }
